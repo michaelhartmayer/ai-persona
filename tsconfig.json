@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "declaration": true,
+    "target": "es6",
+    "module": "commonjs",
+    "noImplicitAny": true,
+    "outDir": "dist",
+    "rootDir": "src",
+    "allowJs": true,
+    "typeRoots": [
+      "node_modules/@types"
+    ]
+  },
+  "include": [
+    "src/**/*"
+  ],
+  "files": [
+    "src/index.js"
+  ],
+  "exclude": [
+    "dist",
+    "node_modules"
+  ]
+}
