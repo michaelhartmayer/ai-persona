@@ -68,6 +68,48 @@ luna.capability({
 await luna.tell('I want to eat something. PB&J or a Salad? Pick one at random.')
 ```
 
+## 🎩 Nesting AIPersonas
+
+A powerful feature of AIPersona is the ability to **nest one persona as a capability of another**. This allows you to quickly scaffold complex AI systems and delegate tasks between personas. Here's an example of how to add another persona as a capability:
+
+```javascript
+const { AIPersona, ContextPreset, AIArg } = require('ai-persona');
+
+// create a persona with a name and a job
+const luna = AIPersona({
+  name: 'Luna Sinbot',
+  job: 'A friendly and endeedingly helpful virtual persona.',
+});
+
+// create a second persona
+const memoryBot = AIPersona({
+  name: 'MemoryBot',
+  job: 'A helpful assistant focused on remembering things for you.',
+});
+
+memoryBot.context(ContextPreset.succinct);
+
+// give memoryBot some capabilities
+memoryBot.capability({
+  name: 'Remember',
+  description: 'Store a piece of information in memory.',
+  args: [
+    AIArg.text('info', 'The information to remember'),
+  ],
+  handler: ({ args }) => {
+    const [info] = args;
+    // Your logic to store the information
+    return `I have stored the information: ${info}`;
+  },
+});
+
+// add memoryBot as a capability of luna
+luna.capability(memoryBot);
+
+// now you can delegate tasks from luna to memoryBot
+const response = await luna.tell('Remember that my favorite color is Blue.');
+```
+
 ## 🤝 Contributing
 
 We welcome contributions! If you'd like to contribute, please follow these steps:
