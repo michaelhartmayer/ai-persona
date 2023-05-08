@@ -8,5 +8,12 @@
   },
   "devDependencies": {
     "vitest": "^0.31.0"
-  }
+  },
+  "name": "ai-persona",
+  "version": "1.0.0",
+  "description": "A GPT4 AI Agent Composition Library",
+  "main": "index.js",
+  "repository": "git@github.com:michaelhartmayer/ai-persona.git",
+  "author": "Michael Hartmayer <michaelhartmayer@gmail.com>",
+  "license": "None"
 }
